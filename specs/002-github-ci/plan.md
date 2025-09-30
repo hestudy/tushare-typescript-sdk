@@ -31,11 +31,11 @@
 - Phase 3-4: Implementation execution (manual or via tools)
 
 ## Summary
-为 tushare-typescript-sdk 项目集成 GitHub Actions CI/CD 流程,实现自动化测试、代码质量检查、构建验证和 npm 包发布。CI 流程将在代码推送和 PR 创建时自动触发,支持 Node.js 18.x 和 20.x 多版本测试,并在版本标签推送时自动发布包到 npm。
+为 tushare-typescript-sdk 项目集成 GitHub Actions CI/CD 流程,实现自动化测试、代码质量检查、构建验证和 npm 包发布。CI 流程将在代码推送和 PR 创建时自动触发,使用 Node.js 20.x 进行测试和构建,并在版本标签推送时自动发布包到 npm。
 
 ## Technical Context
-**Language/Version**: TypeScript 5.0+, Node.js 20.x (测试支持 18.x 和 20.x)
-**Primary Dependencies**: GitHub Actions, tsdown (构建), vitest (测试), ESLint (代码质量)
+**Language/Version**: TypeScript 5.0+, Node.js 20.x
+**Primary Dependencies**: GitHub Actions, tsdown (构建), vitest (测试), ESLint (代码质量), Node.js 20.x
 **Storage**: N/A (CI/CD 配置为 YAML 文件)
 **Testing**: Vitest 用于单元测试和覆盖率报告
 **Target Platform**: Linux (ubuntu-latest), Node.js 运行时

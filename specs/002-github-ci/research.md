@@ -26,27 +26,27 @@
 - **更细粒度拆分**: 为每个检查项(测试、lint、构建)创建独立工作流
   - 拒绝原因: 过度拆分导致配置重复,并发执行控制复杂
 
-## 2. Node.js 多版本测试策略
+## 2. Node.js 版本策略
 
 ### Decision
-使用 GitHub Actions Matrix 策略测试 Node.js 18.x 和 20.x:
+使用 Node.js 20.x 作为唯一测试和构建环境:
 ```yaml
 strategy:
   matrix:
-    node-version: [18.x, 20.x]
+    node-version: [20.x]
 ```
 
 ### Rationale
-- **兼容性保证**: 确保 SDK 在支持的 Node.js 版本上正常工作
-- **用户环境覆盖**: Node.js 18 是 LTS 版本,20 是当前推荐版本
-- **并行执行**: Matrix 策略自动并行运行,不增加总执行时间
-- **规格要求**: 符合 FR-011 的跨版本兼容性测试要求
+- **简化构建**: 单一版本减少 CI 复杂度和执行时间
+- **项目要求**: package.json 要求 Node.js >= 20.0.0
+- **tsdown 兼容性**: tsdown 及其依赖 rolldown 在 Node.js 20.x 上最稳定
+- **目标环境**: 项目主要面向使用最新 Node.js LTS 的开发者
 
 ### Alternatives Considered
-- **仅测试 Node.js 20.x**: 仅测试项目当前使用的版本
-  - 拒绝原因: 无法保证用户使用较旧 LTS 版本时的兼容性
-- **测试更多版本**: 包含 Node.js 16.x 或 22.x
-  - 拒绝原因: 16.x 已接近 EOL,22.x 尚未广泛采用,与规格要求不符
+- **测试 Node.js 18.x 和 20.x**: 使用 matrix 策略测试多版本
+  - 拒绝原因: tsdown/rolldown 在 Node.js 18.x 上存在原生绑定问题,项目 engines 已限制 >= 20.0.0
+- **测试更多版本**: 包含 Node.js 22.x
+  - 拒绝原因: 22.x 尚未广泛采用,20.x 是当前稳定 LTS
 
 ## 3. npm 依赖缓存策略
 

@@ -38,13 +38,13 @@ runs-on: ubuntu-latest
 ```yaml
 strategy:
   matrix:
-    node-version: [18.x, 20.x]
+    node-version: [20.x]
 ```
 
 **契约要求**:
-- 必须测试 Node.js 18.x 和 20.x
+- 必须使用 Node.js 20.x
 - 不测试其他版本
-- Matrix 策略允许并行执行
+- Matrix 策略保持结构一致性(便于将来扩展)
 
 ### Steps Contract
 
@@ -127,7 +127,7 @@ strategy:
 - 所有步骤状态为 ✅ (成功)
 - 工作流整体状态为 Success
 - PR 页面显示绿色勾选标记
-- 执行时间: 约 2-3 分钟/Node.js 版本
+- 执行时间: 约 2-3 分钟
 
 ### 失败场景
 - 任一步骤失败,后续步骤不执行
@@ -179,9 +179,9 @@ strategy:
 
 ## Performance Contract
 
-- **总执行时间**: < 5 分钟/Node.js 版本
+- **总执行时间**: < 5 分钟
 - **依赖安装**: < 10 秒(有缓存)
-- **并行执行**: 两个 Node.js 版本同时运行
+- **单一版本**: Node.js 20.x
 
 ## Integration Points
 
