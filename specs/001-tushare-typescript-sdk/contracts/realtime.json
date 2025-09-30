@@ -1,0 +1,144 @@
+{
+  "apiName": "realtime_quote",
+  "description": "获取股票实时行情数据(基于第三方爬虫)",
+  "积分要求": 0,
+  "dataSource": "Sina财经/东方财富(爬虫数据,仅供研究学习)",
+  "request": {
+    "endpoint": "http://api.tushare.pro",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "api_name": "realtime_quote",
+      "token": "string (required)",
+      "params": {
+        "ts_code": "string (required) - 股票代码,支持多个(逗号分隔),如 000001.SZ,600000.SH"
+      },
+      "fields": "string (optional) - 返回字段列表,逗号分隔"
+    }
+  },
+  "response": {
+    "success": {
+      "code": 0,
+      "msg": null,
+      "data": {
+        "fields": [
+          "ts_code",
+          "name",
+          "price",
+          "open",
+          "high",
+          "low",
+          "pre_close",
+          "volume",
+          "amount"
+        ],
+        "items": [
+          [
+            "000001.SZ",
+            "平安银行",
+            15.67,
+            15.23,
+            15.98,
+            15.10,
+            15.20,
+            12345678.0,
+            189000000.0
+          ]
+        ]
+      }
+    },
+    "error": {
+      "authentication": {
+        "code": 2002,
+        "msg": "token无效或过期",
+        "data": null
+      },
+      "parameter": {
+        "code": -1,
+        "msg": "参数错误:ts_code为必填项",
+        "data": null
+      },
+      "rate_limit": {
+        "code": -1,
+        "msg": "超过调用频率限制",
+        "data": null
+      }
+    }
+  },
+  "fields": {
+    "ts_code": {
+      "type": "string",
+      "description": "股票代码"
+    },
+    "name": {
+      "type": "string",
+      "description": "股票名称"
+    },
+    "price": {
+      "type": "number",
+      "description": "当前价格"
+    },
+    "open": {
+      "type": "number",
+      "description": "开盘价"
+    },
+    "high": {
+      "type": "number",
+      "description": "最高价"
+    },
+    "low": {
+      "type": "number",
+      "description": "最低价"
+    },
+    "pre_close": {
+      "type": "number",
+      "description": "昨收价"
+    },
+    "volume": {
+      "type": "number",
+      "description": "成交量"
+    },
+    "amount": {
+      "type": "number",
+      "description": "成交额"
+    }
+  },
+  "examples": {
+    "查询单个股票": {
+      "request": {
+        "api_name": "realtime_quote",
+        "token": "your_token",
+        "params": {
+          "ts_code": "000001.SZ"
+        }
+      }
+    },
+    "查询多个股票": {
+      "request": {
+        "api_name": "realtime_quote",
+        "token": "your_token",
+        "params": {
+          "ts_code": "000001.SZ,600000.SH,600519.SH"
+        }
+      }
+    },
+    "指定返回字段": {
+      "request": {
+        "api_name": "realtime_quote",
+        "token": "your_token",
+        "params": {
+          "ts_code": "000001.SZ"
+        },
+        "fields": "ts_code,name,price,pct_chg"
+      }
+    }
+  },
+  "notes": [
+    "数据来源为第三方爬虫(Sina财经/东方财富),Tushare不保证数据质量",
+    "仅供研究学习使用,商业用途需用户自行评估合规性",
+    "实时数据存在一定延迟(通常几秒到几分钟)",
+    "接口完全开放,不需要积分"
+  ]
+}

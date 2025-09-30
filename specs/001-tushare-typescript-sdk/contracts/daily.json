@@ -1,0 +1,153 @@
+{
+  "apiName": "daily",
+  "description": "获取股票日线行情数据",
+  "积分要求": 120,
+  "request": {
+    "endpoint": "http://api.tushare.pro",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "api_name": "daily",
+      "token": "string (required)",
+      "params": {
+        "ts_code": "string (optional) - 股票代码,如 000001.SZ",
+        "trade_date": "string (optional) - 交易日期 YYYYMMDD",
+        "start_date": "string (optional) - 开始日期 YYYYMMDD",
+        "end_date": "string (optional) - 结束日期 YYYYMMDD"
+      },
+      "fields": "string (optional) - 返回字段列表,逗号分隔"
+    }
+  },
+  "response": {
+    "success": {
+      "code": 0,
+      "msg": null,
+      "data": {
+        "fields": [
+          "ts_code",
+          "trade_date",
+          "open",
+          "high",
+          "low",
+          "close",
+          "pre_close",
+          "change",
+          "pct_chg",
+          "vol",
+          "amount"
+        ],
+        "items": [
+          [
+            "000001.SZ",
+            "20250930",
+            15.23,
+            15.98,
+            15.10,
+            15.67,
+            15.20,
+            0.47,
+            3.09,
+            123456.0,
+            1890000.0
+          ]
+        ]
+      }
+    },
+    "error": {
+      "authentication": {
+        "code": 2002,
+        "msg": "token无效或过期",
+        "data": null
+      },
+      "permission": {
+        "code": 2002,
+        "msg": "积分不足或无权限",
+        "data": null
+      },
+      "parameter": {
+        "code": -1,
+        "msg": "参数错误",
+        "data": null
+      }
+    }
+  },
+  "fields": {
+    "ts_code": {
+      "type": "string",
+      "description": "股票代码"
+    },
+    "trade_date": {
+      "type": "string",
+      "description": "交易日期 YYYYMMDD"
+    },
+    "open": {
+      "type": "number",
+      "description": "开盘价"
+    },
+    "high": {
+      "type": "number",
+      "description": "最高价"
+    },
+    "low": {
+      "type": "number",
+      "description": "最低价"
+    },
+    "close": {
+      "type": "number",
+      "description": "收盘价"
+    },
+    "pre_close": {
+      "type": "number",
+      "description": "昨收价"
+    },
+    "change": {
+      "type": "number",
+      "description": "涨跌额"
+    },
+    "pct_chg": {
+      "type": "number",
+      "description": "涨跌幅 (%)"
+    },
+    "vol": {
+      "type": "number",
+      "description": "成交量 (手)"
+    },
+    "amount": {
+      "type": "number",
+      "description": "成交额 (千元)"
+    }
+  },
+  "examples": {
+    "按股票代码查询": {
+      "request": {
+        "api_name": "daily",
+        "token": "your_token",
+        "params": {
+          "ts_code": "000001.SZ"
+        }
+      }
+    },
+    "按交易日期查询": {
+      "request": {
+        "api_name": "daily",
+        "token": "your_token",
+        "params": {
+          "trade_date": "20250930"
+        }
+      }
+    },
+    "按日期范围查询": {
+      "request": {
+        "api_name": "daily",
+        "token": "your_token",
+        "params": {
+          "ts_code": "000001.SZ",
+          "start_date": "20250101",
+          "end_date": "20250930"
+        }
+      }
+    }
+  }
+}
