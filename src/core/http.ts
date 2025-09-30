@@ -1,9 +1,5 @@
 import { TushareRequest, TushareRawResponse } from '../types/api'
-import {
-  createNetworkError,
-  createTimeoutError,
-  createServerError
-} from '../models/error'
+import { createNetworkError, createTimeoutError, createServerError } from '../models/error'
 
 /**
  * HTTP客户端类,封装HTTP请求逻辑
@@ -13,7 +9,11 @@ export class HttpClient {
   private timeout: number
   private debug: boolean
 
-  constructor(baseUrl: string = 'http://api.tushare.pro', timeout: number = 5000, debug: boolean = false) {
+  constructor(
+    baseUrl: string = 'http://api.tushare.pro',
+    timeout: number = 5000,
+    debug: boolean = false
+  ) {
     this.baseUrl = baseUrl
     this.timeout = timeout
     this.debug = debug

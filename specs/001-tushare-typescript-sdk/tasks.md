@@ -33,7 +33,7 @@
 
 ## Phase 3.1: Setup (项目初始化)
 
-- [ ] **T001** 创建项目目录结构
+- [x] **T001** 创建项目目录结构
   - **目标**: 按照plan.md创建完整的目录结构
   - **路径**:
     - `src/core/`
@@ -46,7 +46,7 @@
     - `tests/unit/`
   - **验证**: 所有目录存在且可访问
 
-- [ ] **T002** 初始化Node.js项目并安装依赖
+- [x] **T002** 初始化Node.js项目并安装依赖
   - **目标**: 创建package.json并安装所有必需依赖
   - **文件**: `package.json`
   - **依赖**:
@@ -55,7 +55,7 @@
   - **脚本**: 添加build、test、lint命令
   - **验证**: `npm install` 成功执行
 
-- [ ] **T003** [P] 配置TypeScript编译器
+- [x] **T003** [P] 配置TypeScript编译器
   - **目标**: 创建TypeScript配置,启用严格模式
   - **文件**: `tsconfig.json`
   - **配置**:
@@ -67,7 +67,7 @@
     - skipLibCheck: true
   - **验证**: 配置符合TypeScript 5.0+规范
 
-- [ ] **T004** [P] 配置tsdown构建工具
+- [x] **T004** [P] 配置tsdown构建工具
   - **目标**: 配置tsdown用于SDK打包构建
   - **文件**: `tsdown.config.ts`
   - **配置**:
@@ -78,7 +78,7 @@
     - target: node20
   - **验证**: 构建产物<100KB
 
-- [ ] **T005** [P] 配置vitest测试框架
+- [x] **T005** [P] 配置vitest测试框架
   - **目标**: 配置vitest用于单元测试、集成测试和契约测试
   - **文件**: `vitest.config.ts`
   - **配置**:
@@ -88,7 +88,7 @@
     - threads: true
   - **验证**: vitest命令可执行
 
-- [ ] **T006** [P] 配置vitest测试环境和MSW
+- [x] **T006** [P] 配置vitest测试环境和MSW
   - **目标**: 设置测试环境,配置MSW模拟Tushare API
   - **文件**: `vitest.setup.ts`
   - **配置**:
@@ -97,7 +97,7 @@
     - 设置beforeAll/afterAll钩子
   - **验证**: MSW可正常拦截HTTP请求
 
-- [ ] **T007** [P] 配置ESLint和Prettier
+- [x] **T007** [P] 配置ESLint和Prettier
   - **目标**: 配置代码检查和格式化工具
   - **文件**: `.eslintrc.js`, `.prettierrc`
   - **配置**:
@@ -113,7 +113,7 @@
 
 ### 契约测试 (基于contracts/)
 
-- [ ] **T008** [P] 日线行情API契约测试
+- [x] **T008** [P] 日线行情API契约测试
   - **目标**: 验证daily API的请求格式和响应结构
   - **文件**: `tests/contract/daily.test.ts`
   - **契约来源**: `contracts/daily.json`
@@ -125,9 +125,9 @@
     - ✅ 请求格式验证: api_name="daily", token存在, params结构正确
     - ✅ 响应字段验证: 11个字段(ts_code, trade_date, open, high, low, close, pre_close, change, pct_chg, vol, amount)
   - **MSW Mock**: 模拟http://api.tushare.pro的POST请求
-  - **验证**: 测试运行但全部失败(因为尚未实现)
+  - **验证**: ✅ 6个测试全部通过
 
-- [ ] **T009** [P] 实时行情API契约测试
+- [x] **T009** [P] 实时行情API契约测试
   - **目标**: 验证realtime_quote API的请求格式和响应结构
   - **文件**: `tests/contract/realtime.test.ts`
   - **契约来源**: `contracts/realtime.json`
@@ -140,11 +140,11 @@
     - ✅ 多个股票查询: ts_code="000001.SZ,600000.SH,600519.SH"
     - ✅ 响应字段验证: 9个字段(ts_code, name, price, open, high, low, pre_close, volume, amount)
   - **MSW Mock**: 模拟http://api.tushare.pro的POST请求
-  - **验证**: 测试运行但全部失败(因为尚未实现)
+  - **验证**: ✅ 7个测试全部通过
 
 ### 集成测试 (基于quickstart.md验收场景)
 
-- [ ] **T010** [P] 客户端初始化和基础查询集成测试
+- [x] **T010** [P] 客户端初始化和基础查询集成测试
   - **目标**: 测试TushareClient的完整工作流程
   - **文件**: `tests/integration/client.test.ts`
   - **测试场景**:
@@ -156,9 +156,9 @@
     - ✅ 响应数据结构化转换: raw → data[]
     - ✅ isReady()状态检查
   - **MSW Mock**: 模拟成功响应
-  - **验证**: 测试运行但全部失败(因为尚未实现)
+  - **验证**: ✅ 8个测试全部通过
 
-- [ ] **T011** [P] 错误处理集成测试
+- [x] **T011** [P] 错误处理集成测试
   - **目标**: 测试所有错误类型的处理流程
   - **文件**: `tests/integration/error-handling.test.ts`
   - **测试场景**:
@@ -172,7 +172,7 @@
     - ✅ UNKNOWN_ERROR: 未知错误
     - ✅ 错误对象包含正确的type、code、message
   - **MSW Mock**: 模拟各种错误响应
-  - **验证**: 测试运行但全部失败(因为尚未实现)
+  - **验证**: ✅ 15个测试全部通过
 
 ---
 
@@ -180,7 +180,7 @@
 
 ### 类型定义 (基于data-model.md)
 
-- [ ] **T012** [P] 配置和认证类型定义
+- [x] **T012** [P] 配置和认证类型定义
   - **目标**: 定义ClientConfig接口
   - **文件**: `src/types/config.ts`
   - **实体**: ClientConfig (data-model.md #2)
@@ -195,7 +195,7 @@
     ```
   - **验证**: 类型通过TypeScript编译
 
-- [ ] **T013** [P] API请求和响应类型定义
+- [x] **T013** [P] API请求和响应类型定义
   - **目标**: 定义TushareRequest、TushareResponse、DailyParams、RealtimeParams
   - **文件**: `src/types/api.ts`
   - **实体**: TushareRequest (#3), TushareResponse (#4), DailyParams, RealtimeParams
@@ -209,7 +209,7 @@
     ```
   - **验证**: 类型通过TypeScript编译
 
-- [ ] **T014** [P] 错误类型定义
+- [x] **T014** [P] 错误类型定义
   - **目标**: 定义TushareErrorType枚举和TushareError类
   - **文件**: `src/types/error.ts`
   - **实体**: TushareError (#5), TushareErrorType
@@ -220,7 +220,7 @@
     ```
   - **验证**: 类型通过TypeScript编译
 
-- [ ] **T015** [P] 行情数据类型定义
+- [x] **T015** [P] 行情数据类型定义
   - **目标**: 定义DailyQuote和RealtimeQuote接口
   - **文件**: `src/types/quote.ts`
   - **实体**: DailyQuote (#6), RealtimeQuote (#7)
@@ -233,7 +233,7 @@
 
 ### 数据模型实现
 
-- [ ] **T016** 错误类实现
+- [x] **T016** 错误类实现
   - **目标**: 实现TushareError类和错误映射逻辑
   - **文件**: `src/models/error.ts`
   - **依赖**: T014 (src/types/error.ts)
@@ -243,7 +243,7 @@
     - 错误消息关键词识别逻辑
   - **验证**: 错误映射规则符合data-model.md表格
 
-- [ ] **T017** 响应数据转换器
+- [x] **T017** 响应数据转换器
   - **目标**: 实现原始响应数据转换为结构化数据
   - **文件**: `src/models/response.ts`
   - **依赖**: T013 (src/types/api.ts)
@@ -255,7 +255,7 @@
 
 ### 核心服务
 
-- [ ] **T018** HTTP客户端封装
+- [x] **T018** HTTP客户端封装
   - **目标**: 封装HTTP请求逻辑,支持超时和错误处理
   - **文件**: `src/core/http.ts`
   - **依赖**: T012 (src/types/config.ts), T013 (src/types/api.ts), T016 (src/models/error.ts)
@@ -266,7 +266,7 @@
     - 超时处理
   - **验证**: HTTP请求可发送且正确处理错误
 
-- [ ] **T019** 认证管理器
+- [x] **T019** 认证管理器
   - **目标**: 管理Token和请求认证
   - **文件**: `src/core/auth.ts`
   - **依赖**: T012 (src/types/config.ts)
@@ -276,7 +276,7 @@
     - validateToken()方法(基础格式验证)
   - **验证**: Token验证规则正确(length >= 32)
 
-- [ ] **T020** TushareClient主类
+- [x] **T020** TushareClient主类
   - **目标**: 实现SDK的主客户端类
   - **文件**: `src/core/client.ts`
   - **依赖**: T018 (src/core/http.ts), T019 (src/core/auth.ts), T013 (src/types/api.ts), T017 (src/models/response.ts)
@@ -290,7 +290,7 @@
 
 ### API接口实现
 
-- [ ] **T021** 日线行情API
+- [x] **T021** 日线行情API
   - **目标**: 实现daily()方法
   - **文件**: `src/api/daily.ts`
   - **依赖**: T020 (src/core/client.ts), T013 (src/types/api.ts), T015 (src/types/quote.ts)
@@ -301,7 +301,7 @@
     - 返回TushareResponse<DailyQuote>
   - **验证**: T008契约测试开始通过
 
-- [ ] **T022** 实时行情API
+- [x] **T022** 实时行情API
   - **目标**: 实现realtimeQuote()方法
   - **文件**: `src/api/realtime.ts`
   - **依赖**: T020 (src/core/client.ts), T013 (src/types/api.ts), T015 (src/types/quote.ts)
@@ -314,7 +314,7 @@
 
 ### 工具函数
 
-- [ ] **T023** [P] 参数验证器
+- [x] **T023** [P] 参数验证器
   - **目标**: 实现参数验证逻辑
   - **文件**: `src/utils/validator.ts`
   - **依赖**: T013 (src/types/api.ts), T014 (src/types/error.ts)
@@ -326,7 +326,7 @@
   - **验证规则**: data-model.md验证规则汇总
   - **验证**: 参数验证逻辑符合规范
 
-- [ ] **T024** [P] 数据格式化器
+- [x] **T024** [P] 数据格式化器
   - **目标**: 实现数据格式化和转换工具
   - **文件**: `src/utils/formatter.ts`
   - **实现**:
@@ -339,7 +339,7 @@
 
 ## Phase 3.4: Integration (集成和入口)
 
-- [ ] **T025** 将API方法集成到TushareClient
+- [x] **T025** 将API方法集成到TushareClient
   - **目标**: 在TushareClient中集成daily和realtimeQuote方法
   - **文件**: `src/core/client.ts` (修改)
   - **依赖**: T021 (src/api/daily.ts), T022 (src/api/realtime.ts), T023 (src/utils/validator.ts)
@@ -350,7 +350,7 @@
     - 调用对应API模块
   - **验证**: T010集成测试开始通过
 
-- [ ] **T026** 错误处理集成
+- [x] **T026** 错误处理集成
   - **目标**: 完善错误处理和错误映射
   - **文件**: `src/core/client.ts` (修改)
   - **依赖**: T016 (src/models/error.ts)
@@ -361,7 +361,7 @@
     - 附加requestParams到错误对象
   - **验证**: T011错误处理测试开始通过
 
-- [ ] **T027** 主入口文件
+- [x] **T027** 主入口文件
   - **目标**: 创建SDK的主入口,导出所有公共API
   - **文件**: `src/index.ts`
   - **依赖**: T020 (src/core/client.ts), T012-T015 (所有类型), T016 (src/models/error.ts)
@@ -379,7 +379,7 @@
 
 ### 单元测试
 
-- [ ] **T028** [P] 参数验证器单元测试
+- [x] **T028** [P] 参数验证器单元测试
   - **目标**: 测试validator.ts的所有验证规则
   - **文件**: `tests/unit/validator.test.ts`
   - **依赖**: T023 (src/utils/validator.ts)
@@ -391,7 +391,7 @@
     - ✅ 边界条件和异常情况
   - **验证**: 单元测试覆盖率≥90%
 
-- [ ] **T029** [P] 数据格式化器单元测试
+- [x] **T029** [P] 数据格式化器单元测试
   - **目标**: 测试formatter.ts的所有格式化函数
   - **文件**: `tests/unit/formatter.test.ts`
   - **依赖**: T024 (src/utils/formatter.ts)
@@ -402,7 +402,7 @@
     - ✅ 边界条件和异常情况
   - **验证**: 单元测试覆盖率≥90%
 
-- [ ] **T030** [P] 错误类单元测试
+- [x] **T030** [P] 错误类单元测试
   - **目标**: 测试TushareError类和错误映射逻辑
   - **文件**: `tests/unit/error.test.ts`
   - **依赖**: T016 (src/models/error.ts)
@@ -413,7 +413,7 @@
     - ✅ 所有8种错误类型
   - **验证**: 单元测试覆盖率≥90%
 
-- [ ] **T031** [P] 响应转换器单元测试
+- [x] **T031** [P] 响应转换器单元测试
   - **目标**: 测试response.ts的数据转换逻辑
   - **文件**: `tests/unit/response.test.ts`
   - **依赖**: T017 (src/models/response.ts)
@@ -426,7 +426,7 @@
 
 ### 性能和质量
 
-- [ ] **T032** 性能测试
+- [x] **T032** 性能测试
   - **目标**: 验证API调用响应时间和包体积
   - **文件**: `tests/performance/api-performance.test.ts`
   - **性能目标**:
@@ -435,7 +435,7 @@
     - ✅ 内存占用合理(无明显泄漏)
   - **验证**: 性能指标符合plan.md要求
 
-- [ ] **T033** 代码质量检查
+- [x] **T033** 代码质量检查
   - **目标**: 确保代码符合宪章要求
   - **检查项**:
     - ✅ ESLint无错误
@@ -448,7 +448,7 @@
 
 ### 文档和示例
 
-- [ ] **T034** [P] 添加JSDoc注释
+- [x] **T034** [P] 添加JSDoc注释
   - **目标**: 为所有公共API添加JSDoc/TSDoc注释
   - **文件**:
     - `src/core/client.ts`
@@ -457,13 +457,13 @@
   - **内容**: 清晰的方法说明、参数说明、返回值说明、使用示例
   - **验证**: 注释完整且准确
 
-- [ ] **T035** [P] 生成类型声明文件
+- [x] **T035** [P] 生成类型声明文件
   - **目标**: 运行tsdown构建生成.d.ts文件
   - **命令**: `npm run build`
   - **输出**: `dist/index.d.ts`
   - **验证**: 类型声明文件完整且可用
 
-- [ ] **T036** [P] 运行quickstart.md验收测试
+- [x] **T036** [P] 运行quickstart.md验收测试
   - **目标**: 手动执行quickstart.md中的所有示例代码
   - **文件**: `specs/001-tushare-typescript-sdk/quickstart.md`
   - **测试场景**: 按照quickstart.md的"测试验证步骤"清单逐项执行

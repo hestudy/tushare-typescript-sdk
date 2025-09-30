@@ -28,11 +28,7 @@ export class TushareClient {
     }
 
     // 初始化HTTP客户端和认证管理器
-    this.httpClient = new HttpClient(
-      this.config.baseUrl,
-      this.config.timeout,
-      this.config.debug
-    )
+    this.httpClient = new HttpClient(this.config.baseUrl, this.config.timeout, this.config.debug)
     this.authManager = new AuthManager(this.config)
     this.initialized = true
   }
@@ -56,11 +52,7 @@ export class TushareClient {
    */
   updateTimeout(timeout: number): void {
     this.config.timeout = timeout
-    this.httpClient = new HttpClient(
-      this.config.baseUrl,
-      this.config.timeout,
-      this.config.debug
-    )
+    this.httpClient = new HttpClient(this.config.baseUrl, this.config.timeout, this.config.debug)
   }
 
   /**
