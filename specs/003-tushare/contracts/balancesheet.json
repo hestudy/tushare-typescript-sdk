@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Tushare 资产负债表接口契约",
+  "description": "定义 balancesheet 接口的请求和响应格式",
+  "definitions": {
+    "request": {
+      "type": "object",
+      "required": ["api_name", "token", "params"],
+      "properties": {
+        "api_name": {
+          "type": "string",
+          "const": "balancesheet"
+        },
+        "token": {
+          "type": "string",
+          "minLength": 1
+        },
+        "params": {
+          "type": "object",
+          "required": ["ts_code"],
+          "properties": {
+            "ts_code": {
+              "type": "string",
+              "pattern": "^\\d{6}\\.(SZ|SH|BJ)$",
+              "description": "股票代码"
+            },
+            "start_date": {
+              "type": "string",
+              "pattern": "^\\d{8}$"
+            },
+            "end_date": {
+              "type": "string",
+              "pattern": "^\\d{8}$"
+            }
+          }
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "response_success": {
+      "type": "object",
+      "required": ["code", "msg", "data"],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "const": 0
+        },
+        "msg": {
+          "type": "string",
+          "const": "success"
+        },
+        "data": {
+          "type": "object",
+          "required": ["fields", "items"],
+          "properties": {
+            "fields": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "array"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "examples": {
+    "request_basic": {
+      "api_name": "balancesheet",
+      "token": "your_token_here",
+      "params": {
+        "ts_code": "000001.SZ"
+      }
+    },
+    "response_success": {
+      "code": 0,
+      "msg": "success",
+      "data": {
+        "fields": ["ts_code", "end_date", "ann_date", "total_assets", "total_liab", "total_hldr_eqy_inc_min_int"],
+        "items": [
+          ["000001.SZ", "20231231", "20240328", 1200000000000, 800000000000, 400000000000]
+        ]
+      }
+    }
+  }
+}
