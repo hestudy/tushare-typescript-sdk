@@ -43,8 +43,11 @@ console.log(dailyData)
 
 ### 浏览器
 
-\`\`\`html
-<script src="https://unpkg.com/tushare-typescript-sdk/dist/index.iife.js"></script>
+```html
+<!-- 加载 SDK -->
+<script src="https://unpkg.com/tushare-typescript-sdk/dist/index.iife.js"><\/script>
+
+<!-- 使用 SDK -->
 <script>
   const client = new Tushare.TushareClient({
     token: 'YOUR_API_TOKEN'
@@ -52,8 +55,8 @@ console.log(dailyData)
 
   client.daily({ ts_code: '000001.SZ' })
     .then(data => console.log(data))
-</script>
-\`\`\`
+<\/script>
+```
 
 ## 配置选项
 

@@ -5,6 +5,7 @@ export default defineConfig({
   title: 'Tushare TypeScript SDK',
   description: 'TypeScript SDK for Tushare Pro API',
   lang: 'zh-CN',
+  ignoreDeadLinks: true,
 
   themeConfig: {
     // 导航栏

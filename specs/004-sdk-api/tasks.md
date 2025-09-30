@@ -224,7 +224,7 @@ export default defineConfig({
 
 ---
 
-### T011 [P]: 集成测试 - 完整 API 测试流程
+### [X] T011 [P]: 集成测试 - 完整 API 测试流程
 **Description**: 端到端测试: Token 配置 → API 调用 → 历史记录
 **Files**:
 - `tests/integration/api-test-flow.test.ts`
@@ -243,7 +243,7 @@ export default defineConfig({
 
 ---
 
-### T012 [P]: 集成测试 - 文档生成和 VitePress 集成
+### [X] T012 [P]: 集成测试 - 文档生成和 VitePress 集成
 **Description**: 测试文档生成器输出与 VitePress 的集成
 **Files**:
 - `tests/integration/docs-generation.test.ts`
@@ -632,7 +632,7 @@ export default {
 
 ---
 
-### T032: 创建 API 分类配置
+### [X] T032: 创建 API 分类配置
 **Description**: 创建 API 分类映射配置文件
 **Files**:
 - `tools/docs-generator/categorization.config.ts`
@@ -690,7 +690,7 @@ export const API_CATEGORIES = {
 
 ## Phase 3.5: 优化和验证
 
-### T035 [P]: 运行完整验证流程
+### [X] T035 [P]: 运行完整验证流程
 **Description**: 执行 quickstart.md 中的完整验证流程
 **Files**:
 - `/Users/hestudy/Documents/project/tushare-typescript-sdk/specs/004-sdk-api/quickstart.md`

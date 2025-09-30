@@ -110,10 +110,8 @@ export class MemoryCache implements CacheStorage {
     }, this.defaultCleanupIntervalMs)
 
     // 避免 Node.js 进程无法退出
-    // @ts-expect-error - unref 方法在某些环境中可能不存在
-    if (this.cleanupInterval && typeof this.cleanupInterval.unref === 'function') {
-      // @ts-expect-error - unref 方法在某些环境中可能不存在
-      this.cleanupInterval.unref()
+    if (this.cleanupInterval && typeof (this.cleanupInterval as any).unref === 'function') {
+      (this.cleanupInterval as any).unref()
     }
   }
 
