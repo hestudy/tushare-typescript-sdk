@@ -98,6 +98,9 @@ describe('error', () => {
 
       const error3 = mapApiErrorToTushareError({ code: -1, msg: 'rate limit exceeded', data: null })
       expect(error3.type).toBe(TushareErrorType.RATE_LIMIT_ERROR)
+
+      const error4 = mapApiErrorToTushareError({ code: -1, msg: '频率超限', data: null })
+      expect(error4.type).toBe(TushareErrorType.RATE_LIMIT_ERROR)
     })
 
     it('应将参数相关消息映射为参数错误', () => {
@@ -119,6 +122,11 @@ describe('error', () => {
     it('应对code=2002但无明确关键词的消息使用默认映射', () => {
       const error = mapApiErrorToTushareError({ code: 2002, msg: '访问被拒绝', data: null })
       expect(error.type).toBe(TushareErrorType.AUTHENTICATION_ERROR)
+    })
+
+    it('应将code=-1但不匹配任何特定模式的映射为参数错误', () => {
+      const error = mapApiErrorToTushareError({ code: -1, msg: '未知的-1错误', data: null })
+      expect(error.type).toBe(TushareErrorType.PARAMETER_ERROR)
     })
   })
 
@@ -143,6 +151,15 @@ describe('error', () => {
       expect(error.type).toBe(TushareErrorType.NETWORK_ERROR)
       expect(error.message).toContain('网络错误')
       expect(error.message).toContain('网络连接失败')
+    })
+
+    it('createServerError 应创建服务器错误', async () => {
+      const { createServerError } = await import('../../src/models/error')
+      const error = createServerError(500, 'Internal Server Error')
+      expect(error.type).toBe(TushareErrorType.SERVER_ERROR)
+      expect(error.message).toContain('服务器错误')
+      expect(error.message).toContain('500')
+      expect(error.code).toBe(500)
     })
   })
 
