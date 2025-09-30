@@ -2,11 +2,13 @@ import { defineConfig } from 'tsdown'
 
 export default defineConfig({
   entry: './src/index.ts',
-  format: ['esm', 'cjs'],
+  format: ['esm', 'cjs', 'iife'],
   dts: true,
   minify: true,
-  target: 'node20',
+  target: 'es2020',
   clean: true,
   sourcemap: true,
-  outDir: 'dist'
+  outDir: 'dist',
+  globalName: 'Tushare',
+  platform: 'browser'
 })

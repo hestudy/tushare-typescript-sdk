@@ -1,0 +1,25 @@
+{
+  "entryPoints": ["src/index.ts"],
+  "out": "docs/api-temp",
+  "plugin": ["typedoc-plugin-markdown"],
+  "exclude": ["**/*+(test|spec).ts", "**/__tests__/**"],
+  "excludePrivate": true,
+  "excludeProtected": false,
+  "excludeInternal": true,
+  "categorizeByGroup": true,
+  "categoryOrder": [
+    "Client",
+    "Market Data",
+    "Financial Data",
+    "Basic Data",
+    "Cache",
+    "Types",
+    "*"
+  ],
+  "readme": "none",
+  "skipErrorChecking": false,
+  "validation": {
+    "notExported": true,
+    "invalidLink": true
+  }
+}
