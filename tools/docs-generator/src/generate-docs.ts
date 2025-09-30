@@ -54,16 +54,34 @@ async function main() {
         )
       }
 
-      // 复制其他文档文件
-      const files = await fs.readdir(TEMP_DIR)
-      for (const file of files) {
-        if (file.endsWith('.md') && file !== 'README.md') {
-          const srcPath = path.join(TEMP_DIR, file)
-          const destPath = path.join(DOCS_API_DIR, file)
-          await fs.copyFile(srcPath, destPath)
-          console.log(`  ✓ 复制文件: ${file}`)
+      // 递归复制所有文档文件和目录,并修复链接
+      async function copyRecursive(src: string, dest: string) {
+        const entries = await fs.readdir(src, { withFileTypes: true })
+
+        for (const entry of entries) {
+          const srcPath = path.join(src, entry.name)
+          const destPath = path.join(dest, entry.name)
+
+          if (entry.isDirectory()) {
+            await fs.mkdir(destPath, { recursive: true })
+            await copyRecursive(srcPath, destPath)
+            console.log(`  ✓ 复制目录: ${entry.name}/`)
+          } else if (entry.name.endsWith('.md') && entry.name !== 'README.md') {
+            // 读取文件内容
+            let content = await fs.readFile(srcPath, 'utf-8')
+
+            // 修复链接: README.md -> index.md
+            content = content.replace(/\(\.\.\/(\.\.\/)?README\.md\)/g, '(../$1index.md)')
+            content = content.replace(/\[README\.md\]/g, '[index.md]')
+
+            // 写入修复后的内容
+            await fs.writeFile(destPath, content)
+            console.log(`  ✓ 复制并修复文件: ${entry.name}`)
+          }
         }
       }
+
+      await copyRecursive(TEMP_DIR, DOCS_API_DIR)
     } catch (error) {
       console.log('  ⚠ TypeDoc 输出目录不存在,创建默认文档')
       await fs.writeFile(

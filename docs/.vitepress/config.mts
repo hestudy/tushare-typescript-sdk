@@ -5,7 +5,6 @@ export default defineConfig({
   title: 'Tushare TypeScript SDK',
   description: 'TypeScript SDK for Tushare Pro API',
   lang: 'zh-CN',
-  ignoreDeadLinks: true,
 
   themeConfig: {
     // 导航栏
@@ -40,30 +39,44 @@ export default defineConfig({
           ]
         },
         {
-          text: '行情数据',
+          text: '核心类',
           collapsed: false,
           items: [
-            { text: '日线行情', link: '/api/daily' },
-            { text: '周线行情', link: '/api/weekly' },
-            { text: '分钟行情', link: '/api/minute' }
+            { text: 'TushareClient', link: '/api/classes/TushareClient' },
+            { text: 'MemoryCache', link: '/api/classes/MemoryCache' }
           ]
         },
         {
-          text: '财务数据',
+          text: '错误类型',
           collapsed: false,
           items: [
-            { text: '利润表', link: '/api/income' },
-            { text: '资产负债表', link: '/api/balance' },
-            { text: '现金流量表', link: '/api/cashflow' }
+            { text: 'TushareError', link: '/api/classes/TushareError' },
+            { text: 'AuthenticationError', link: '/api/classes/AuthenticationError' },
+            { text: 'RateLimitError', link: '/api/classes/RateLimitError' },
+            { text: 'DataNotDisclosedError', link: '/api/classes/DataNotDisclosedError' }
           ]
         },
         {
-          text: '基础数据',
+          text: '接口定义',
           collapsed: false,
           items: [
-            { text: '股票列表', link: '/api/stock_basic' },
-            { text: '交易日历', link: '/api/trade_cal' },
-            { text: '公司信息', link: '/api/stock_company' }
+            { text: 'ClientConfig', link: '/api/interfaces/ClientConfig' },
+            { text: 'CacheConfig', link: '/api/interfaces/CacheConfig' },
+            { text: 'DailyQuote', link: '/api/interfaces/DailyQuote' },
+            { text: 'RealtimeQuote', link: '/api/interfaces/RealtimeQuote' },
+            { text: 'BalanceSheet', link: '/api/interfaces/BalanceSheet' },
+            { text: 'IncomeStatement', link: '/api/interfaces/IncomeStatement' },
+            { text: 'CashFlowStatement', link: '/api/interfaces/CashFlowStatement' },
+            { text: 'FinancialIndicator', link: '/api/interfaces/FinancialIndicator' }
+          ]
+        },
+        {
+          text: '枚举类型',
+          collapsed: true,
+          items: [
+            { text: 'TushareErrorType', link: '/api/enumerations/TushareErrorType' },
+            { text: 'DataStatus', link: '/api/enumerations/DataStatus' },
+            { text: 'PeriodType', link: '/api/enumerations/PeriodType' }
           ]
         }
       ]
