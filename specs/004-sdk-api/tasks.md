@@ -264,7 +264,7 @@ export default defineConfig({
 
 ### 3.3.1: 数据模型和类型定义
 
-### T013 [P]: 创建 API 文档相关类型
+### [X] T013 [P]: 创建 API 文档相关类型
 **Description**: 创建 `ApiDocEntry`, `ApiParameter`, `ApiReturn` 等类型
 **Files**:
 - `docs/.vitepress/theme/types/api-doc.ts`
@@ -284,7 +284,7 @@ export default defineConfig({
 
 ---
 
-### T014 [P]: 创建认证相关类型
+### [X] T014 [P]: 创建认证相关类型
 **Description**: 创建 `TokenConfig`, `AuthStatus` 类型
 **Files**:
 - `docs/.vitepress/theme/types/auth.ts`
@@ -297,7 +297,7 @@ export default defineConfig({
 
 ---
 
-### T015 [P]: 创建历史记录相关类型
+### [X] T015 [P]: 创建历史记录相关类型
 **Description**: 创建 `RequestHistoryEntry`, `RequestHistory` 类型
 **Files**:
 - `docs/.vitepress/theme/types/history.ts`
@@ -310,7 +310,7 @@ export default defineConfig({
 
 ---
 
-### T016 [P]: 创建测试结果相关类型
+### [X] T016 [P]: 创建测试结果相关类型
 **Description**: 创建 `TestResult`, `TestError`, `TestMetadata` 类型
 **Files**:
 - `docs/.vitepress/theme/types/test-result.ts`
@@ -324,7 +324,7 @@ export default defineConfig({
 
 ---
 
-### T017 [P]: 创建存储契约常量
+### [X] T017 [P]: 创建存储契约常量
 **Description**: 创建 localStorage 存储键常量
 **Files**:
 - `docs/.vitepress/theme/types/storage.ts`
@@ -338,7 +338,7 @@ export default defineConfig({
 
 ---
 
-### T018: 创建类型导出索引
+### [X] T018: 创建类型导出索引
 **Description**: 创建统一的类型导出文件
 **Files**:
 - `docs/.vitepress/theme/types/index.ts`
@@ -359,7 +359,7 @@ export * from './storage'
 
 ### 3.3.2: Composables 实现
 
-### T019 [P]: 实现 useLocalStorage composable
+### [X] T019 [P]: 实现 useLocalStorage composable
 **Description**: 实现 localStorage 封装 composable
 **Files**:
 - `docs/.vitepress/theme/composables/useLocalStorage.ts`
@@ -376,7 +376,7 @@ export * from './storage'
 
 ---
 
-### T020: 实现 useSdkClient composable
+### [X] T020: 实现 useSdkClient composable
 **Description**: 实现 SDK 客户端单例管理
 **Files**:
 - `docs/.vitepress/theme/composables/useSdkClient.ts`
@@ -397,7 +397,7 @@ export * from './storage'
 
 ---
 
-### T021 [P]: 实现 useRequestHistory composable
+### [X] T021 [P]: 实现 useRequestHistory composable
 **Description**: 实现请求历史记录管理
 **Files**:
 - `docs/.vitepress/theme/composables/useRequestHistory.ts`
@@ -418,7 +418,7 @@ export * from './storage'
 
 ---
 
-### T022: 创建 Composables 导出索引
+### [X] T022: 创建 Composables 导出索引
 **Description**: 创建统一的 composables 导出文件
 **Files**:
 - `docs/.vitepress/theme/composables/index.ts`
@@ -436,7 +436,7 @@ export * from './useRequestHistory'
 
 ### 3.3.3: Vue 组件实现
 
-### T023: 实现 TokenManager 组件
+### [X] T023: 实现 TokenManager 组件
 **Description**: 实现 Token 管理组件
 **Files**:
 - `docs/.vitepress/theme/components/TokenManager.vue`
@@ -457,7 +457,7 @@ export * from './useRequestHistory'
 
 ---
 
-### T024: 实现 RequestHistory 组件
+### [X] T024: 实现 RequestHistory 组件
 **Description**: 实现请求历史记录组件
 **Files**:
 - `docs/.vitepress/theme/components/RequestHistory.vue`
@@ -478,7 +478,7 @@ export * from './useRequestHistory'
 
 ---
 
-### T025: 实现 ApiTester 组件
+### [X] T025: 实现 ApiTester 组件
 **Description**: 实现 API 测试面板组件
 **Files**:
 - `docs/.vitepress/theme/components/ApiTester.vue`
@@ -502,7 +502,7 @@ export * from './useRequestHistory'
 
 ---
 
-### T026: 创建组件导出索引
+### [X] T026: 创建组件导出索引
 **Description**: 创建统一的组件导出文件
 **Files**:
 - `docs/.vitepress/theme/components/index.ts`
@@ -520,7 +520,7 @@ export { default as ApiTester } from './ApiTester.vue'
 
 ### 3.3.4: VitePress 主题集成
 
-### T027: 创建自定义主题入口
+### [X] T027: 创建自定义主题入口
 **Description**: 创建扩展默认主题的主题入口文件
 **Files**:
 - `docs/.vitepress/theme/index.ts`
@@ -553,7 +553,7 @@ export default {
 
 ---
 
-### T028: 创建自定义布局组件(可选)
+### [X] T028: 创建自定义布局组件(可选)
 **Description**: 创建自定义布局,插入 Token 管理器和历史记录
 **Files**:
 - `docs/.vitepress/theme/Layout.vue`
@@ -573,7 +573,7 @@ export default {
 
 ### 3.3.5: 文档生成工具实现
 
-### T029 [P]: 实现 API 信息提取器
+### [X] T029 [P]: 实现 API 信息提取器
 **Description**: 从 TypeScript 源代码提取 API 信息
 **Files**:
 - `tools/docs-generator/src/extract-api.ts`
@@ -592,7 +592,7 @@ export default {
 
 ---
 
-### T030: 实现 Markdown 生成器
+### [X] T030: 实现 Markdown 生成器
 **Description**: 将 `ApiDocEntry` 转换为 Markdown
 **Files**:
 - `tools/docs-generator/src/format-markdown.ts`
@@ -612,7 +612,7 @@ export default {
 
 ---
 
-### T031: 实现主文档生成器
+### [X] T031: 实现主文档生成器
 **Description**: 实现主生成器逻辑,整合提取和格式化
 **Files**:
 - `tools/docs-generator/src/generate-docs.ts`
@@ -654,7 +654,7 @@ export const API_CATEGORIES = {
 
 ## Phase 3.4: 集成和配置
 
-### T033: 完善 VitePress 侧边栏配置
+### [X] T033: 完善 VitePress 侧边栏配置
 **Description**: 根据分类生成侧边栏配置
 **Files**:
 - `docs/.vitepress/config.ts`
@@ -672,7 +672,7 @@ export const API_CATEGORIES = {
 
 ---
 
-### T034: 集成 SDK 浏览器构建到文档站
+### [X] T034: 集成 SDK 浏览器构建到文档站
 **Description**: 将打包的 SDK 复制到文档站 public 目录
 **Files**:
 - `docs/public/sdk/tushare-sdk.iife.js` (复制自 `dist/index.iife.js`)
