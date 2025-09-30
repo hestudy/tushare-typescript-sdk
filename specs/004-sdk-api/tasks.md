@@ -35,7 +35,7 @@
 
 ## Phase 3.1: 环境准备与配置
 
-### T001: 创建文档站项目结构
+### [X] T001: 创建文档站项目结构
 **Description**: 创建 VitePress 文档站的目录结构
 **Files**:
 - `docs/.vitepress/config.ts`
@@ -54,7 +54,7 @@
 
 ---
 
-### T002: 安装 VitePress 和相关依赖
+### [X] T002: 安装 VitePress 和相关依赖
 **Description**: 安装 VitePress, TypeDoc, Vue 相关依赖
 **Files**:
 - `package.json` (更新 devDependencies)
@@ -72,7 +72,7 @@ npm install -D vue@^3.4.0
 
 ---
 
-### T003 [P]: 创建文档生成工具项目结构
+### [X] T003 [P]: 创建文档生成工具项目结构
 **Description**: 创建文档生成工具的目录和配置
 **Files**:
 - `tools/docs-generator/src/` (目录)
@@ -90,7 +90,7 @@ npm install -D vue@^3.4.0
 
 ---
 
-### T004: 配置 TypeDoc
+### [X] T004: 配置 TypeDoc
 **Description**: 创建 TypeDoc 配置文件
 **Files**:
 - `/Users/hestudy/Documents/project/tushare-typescript-sdk/typedoc.json`
@@ -108,7 +108,7 @@ npm install -D vue@^3.4.0
 
 ---
 
-### T005 [P]: 配置 VitePress 基础配置
+### [X] T005 [P]: 配置 VitePress 基础配置
 **Description**: 配置 VitePress 站点基础设置
 **Files**:
 - `docs/.vitepress/config.ts`
@@ -123,7 +123,7 @@ npm install -D vue@^3.4.0
 
 ---
 
-### T006: 配置 tsdown 生成 IIFE 格式
+### [X] T006: 配置 tsdown 生成 IIFE 格式
 **Description**: 修改 tsdown 配置,添加浏览器 IIFE 格式输出
 **Files**:
 - `/Users/hestudy/Documents/project/tushare-typescript-sdk/tsdown.config.ts`
@@ -146,7 +146,7 @@ export default defineConfig({
 
 ---
 
-### T007 [P]: 添加 npm 脚本
+### [X] T007 [P]: 添加 npm 脚本
 **Description**: 在 `package.json` 中添加文档相关脚本
 **Files**:
 - `/Users/hestudy/Documents/project/tushare-typescript-sdk/package.json`
@@ -170,7 +170,7 @@ export default defineConfig({
 
 ## Phase 3.2: 测试优先(TDD) ⚠️ 必须在实现前完成
 
-### T008 [P]: 契约测试 - 文档生成器
+### [X] T008 [P]: 契约测试 - 文档生成器
 **Description**: 为文档生成器编写契约测试(必须失败)
 **Files**:
 - `tests/contract/docs-generator.contract.test.ts`
@@ -187,7 +187,7 @@ export default defineConfig({
 
 ---
 
-### T009 [P]: 契约测试 - localStorage 存储
+### [X] T009 [P]: 契约测试 - localStorage 存储
 **Description**: 为 localStorage 存储操作编写契约测试(必须失败)
 **Files**:
 - `tests/contract/storage.contract.test.ts`
@@ -205,7 +205,7 @@ export default defineConfig({
 
 ---
 
-### T010 [P]: 契约测试 - API 测试组件
+### [X] T010 [P]: 契约测试 - API 测试组件
 **Description**: 为 ApiTester 组件编写契约测试(必须失败)
 **Files**:
 - `tests/unit/components/ApiTester.test.ts`
