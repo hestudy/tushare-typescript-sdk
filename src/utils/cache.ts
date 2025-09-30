@@ -111,7 +111,7 @@ export class MemoryCache implements CacheStorage {
 
     // 避免 Node.js 进程无法退出
     if (this.cleanupInterval && typeof (this.cleanupInterval as any).unref === 'function') {
-      (this.cleanupInterval as any).unref()
+      ;(this.cleanupInterval as any).unref()
     }
   }
 
