@@ -47,8 +47,8 @@
 - 确保目录权限正确
 
 **验证标准**:
-- [ ] `.github/workflows/` 目录存在
-- [ ] 目录结构符合 GitHub Actions 标准
+- [x] `.github/workflows/` 目录存在
+- [x] 目录结构符合 GitHub Actions 标准
 
 **参考文档**:
 - `specs/002-github-ci/plan.md` - Project Structure 部分
@@ -86,11 +86,11 @@
 - 复杂配置(如 matrix)添加注释
 
 **验证标准**:
-- [ ] YAML 语法正确(使用 yamllint 或 GitHub Actions 语法检查)
-- [ ] 所有必需字段存在
-- [ ] Action 版本固定为 @v4
-- [ ] npm 缓存已启用
-- [ ] 包含所有 7 个执行步骤
+- [x] YAML 语法正确(使用 yamllint 或 GitHub Actions 语法检查)
+- [x] 所有必需字段存在
+- [x] Action 版本固定为 @v4
+- [x] npm 缓存已启用
+- [x] 包含所有 7 个执行步骤
 
 **参考文档**:
 - `specs/002-github-ci/contracts/ci-workflow-schema.md` (完整契约)
@@ -128,11 +128,11 @@
 - 注释发布前测试的重要性
 
 **验证标准**:
-- [ ] YAML 语法正确
-- [ ] 标签触发模式正确(`v*`)
-- [ ] registry-url 设置为 npm 官方源
-- [ ] NODE_AUTH_TOKEN 正确引用 secret
-- [ ] 包含所有 6 个执行步骤
+- [x] YAML 语法正确
+- [x] 标签触发模式正确(`v*`)
+- [x] registry-url 设置为 npm 官方源
+- [x] NODE_AUTH_TOKEN 正确引用 secret
+- [x] 包含所有 6 个执行步骤
 
 **参考文档**:
 - `specs/002-github-ci/contracts/publish-workflow-schema.md` (完整契约)
@@ -176,9 +176,9 @@
    - [ ] 没有制表符(tabs)
 
 **验证标准**:
-- [ ] yamllint 无错误
-- [ ] 手动检查清单全部通过
-- [ ] 文件可被 GitHub Actions 正确解析
+- [x] yamllint 无错误
+- [x] 手动检查清单全部通过
+- [x] 文件可被 GitHub Actions 正确解析
 
 **依赖**: T002, T003
 
@@ -421,10 +421,10 @@
    - 不要将 token 提交到代码仓库
 
 **验证标准**:
-- [ ] 文档清晰易懂
-- [ ] 包含截图或详细步骤
-- [ ] 涵盖安全最佳实践
-- [ ] 提供验证和故障排查指导
+- [x] 文档清晰易懂
+- [x] 包含截图或详细步骤
+- [x] 涵盖安全最佳实践
+- [x] 提供验证和故障排查指导
 
 **参考文档**:
 - `specs/002-github-ci/contracts/publish-workflow-schema.md` - Security Contract 部分
@@ -550,10 +550,10 @@ git push origin main --follow-tags
    - 对小团队可选择性要求 PR review
 
 **验证标准**:
-- [ ] 文档包含完整配置步骤
-- [ ] 包含截图或详细说明
-- [ ] 说明如何验证配置生效
-- [ ] 提供团队协作建议
+- [x] 文档包含完整配置步骤
+- [x] 包含截图或详细说明
+- [x] 说明如何验证配置生效
+- [x] 提供团队协作建议
 
 **参考文档**:
 - `specs/002-github-ci/quickstart.md` - Scenario 3
@@ -618,10 +618,10 @@ git push origin main --follow-tags
    - 与其他徽章(如 npm version, license)并列
 
 **验证标准**:
-- [ ] CI 状态徽章显示并正确链接
-- [ ] 开发说明清晰完整
-- [ ] 发布流程说明准确
-- [ ] Markdown 格式正确
+- [x] CI 状态徽章显示并正确链接
+- [x] 开发说明清晰完整
+- [x] 发布流程说明准确
+- [x] Markdown 格式正确
 
 **依赖**: T005, T006
 
