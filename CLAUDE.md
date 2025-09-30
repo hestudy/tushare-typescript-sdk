@@ -4,6 +4,8 @@ Auto-generated from all feature plans. Last updated: 2025-09-30
 
 ## Active Technologies
 - TypeScript 5.0+, Node.js 20.x+ + 使用tsdown进行编译构建, 使用vitest进行测试 (001-tushare-typescript-sdk)
+- TypeScript 5.0+, Node.js 20.x (测试支持 18.x 和 20.x) + GitHub Actions, tsdown (构建), vitest (测试), ESLint (代码质量) (002-github-ci)
+- N/A (CI/CD 配置为 YAML 文件) (002-github-ci)
 
 ## Project Structure
 ```
@@ -18,6 +20,7 @@ npm test [ONLY COMMANDS FOR ACTIVE TECHNOLOGIES][ONLY COMMANDS FOR ACTIVE TECHNO
 TypeScript 5.0+, Node.js 20.x+: Follow standard conventions
 
 ## Recent Changes
+- 002-github-ci: Added TypeScript 5.0+, Node.js 20.x (测试支持 18.x 和 20.x) + GitHub Actions, tsdown (构建), vitest (测试), ESLint (代码质量)
 - 001-tushare-typescript-sdk: Added TypeScript 5.0+, Node.js 20.x+ + 使用tsdown进行编译构建, 使用vitest进行测试
 
 <!-- MANUAL ADDITIONS START -->

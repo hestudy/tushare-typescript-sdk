@@ -1,5 +1,6 @@
 # Tushare TypeScript SDK
 
+![CI](https://github.com/hestudy/tushare-typescript-sdk/workflows/CI/badge.svg)
 [![npm version](https://img.shields.io/npm/v/tushare-typescript-sdk.svg)](https://www.npmjs.com/package/tushare-typescript-sdk)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0%2B-blue.svg)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-20.x%2B-green.svg)](https://nodejs.org/)
@@ -112,6 +113,16 @@ try {
 
 ## 开发
 
+### CI/CD
+
+本项目使用 GitHub Actions 进行持续集成和部署:
+
+- **CI 检查**: 每次推送和 PR 自动运行测试、lint、类型检查和构建
+- **Node.js 版本**: 在 Node.js 20.x 上测试和构建
+- **自动发布**: 推送版本标签(如 v1.0.0)自动发布到 npm
+
+### 本地开发
+
 ```bash
 # 安装依赖
 npm install
@@ -119,14 +130,25 @@ npm install
 # 运行测试
 npm test
 
-# 类型检查
+# 测试覆盖率
+npm run test:coverage
+
+# 代码检查
+npm run lint
 npm run typecheck
 
 # 构建
 npm run build
+```
 
-# 代码检查
-npm run lint
+### 发布新版本
+
+```bash
+# 更新版本号
+npm version patch  # 或 minor, major
+
+# 推送标签触发自动发布
+git push origin main --follow-tags
 ```
 
 ## 许可证
