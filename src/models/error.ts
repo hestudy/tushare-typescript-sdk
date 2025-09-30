@@ -204,8 +204,19 @@ export class RateLimitError extends TushareError {
  * ```
  */
 export class AuthenticationError extends TushareError {
-  constructor(message: string, code?: number, rawResponse?: TushareRawResponse, requestParams?: Record<string, unknown>) {
-    super(TushareErrorType.AUTHENTICATION_ERROR, message, code || 40001, rawResponse, requestParams)
+  constructor(
+    message: string,
+    code?: number,
+    rawResponse?: TushareRawResponse,
+    requestParams?: Record<string, unknown>
+  ) {
+    super(
+      TushareErrorType.AUTHENTICATION_ERROR,
+      message,
+      code || 40001,
+      rawResponse,
+      requestParams
+    )
     this.name = 'AuthenticationError'
 
     // 维护正确的原型链
