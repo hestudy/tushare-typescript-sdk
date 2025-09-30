@@ -1,3 +1,5 @@
+import { CacheConfig } from './cache'
+
 /**
  * Tushare客户端配置接口
  */
@@ -25,4 +27,10 @@ export interface ClientConfig {
    * @default false
    */
   debug?: boolean
+
+  /**
+   * 缓存配置 (可选)
+   * @default undefined (不启用缓存)
+   */
+  cache?: CacheConfig
 }

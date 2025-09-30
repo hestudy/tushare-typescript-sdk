@@ -1,4 +1,5 @@
 import { TushareRawResponse } from './api'
+import { DataStatus } from './financial'
 
 /**
  * Tushare错误类型枚举
@@ -19,7 +20,9 @@ export enum TushareErrorType {
   /** 服务器内部错误 */
   SERVER_ERROR = 'SERVER_ERROR',
   /** 未知错误 */
-  UNKNOWN_ERROR = 'UNKNOWN_ERROR'
+  UNKNOWN_ERROR = 'UNKNOWN_ERROR',
+  /** 数据未披露 */
+  DATA_NOT_DISCLOSED = 'DATA_NOT_DISCLOSED'
 }
 
 /**
@@ -63,4 +66,24 @@ export class TushareError extends Error {
     // 维护正确的原型链
     Object.setPrototypeOf(this, TushareError.prototype)
   }
+}
+
+/**
+ * 数据未披露错误选项
+ */
+export interface DataNotDisclosedErrorOptions {
+  /** 股票代码 */
+  tsCode: string
+  /** 报告期 */
+  endDate: string
+  /** 数据状态 */
+  status: DataStatus
+}
+
+/**
+ * 限流错误选项
+ */
+export interface RateLimitErrorOptions {
+  /** 建议的重试等待时间(秒) */
+  retryAfter?: number
 }
