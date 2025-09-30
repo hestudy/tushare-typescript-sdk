@@ -14,7 +14,7 @@ export function mapApiErrorToTushareError(
   // 根据错误代码和消息内容判断错误类型并返回对应的错误实例
   if (code === 40001) {
     // 40001: 认证失败
-    return new AuthenticationError(message, code)
+    return new AuthenticationError(message, code, response, requestParams)
   } else if (code === 40002) {
     // 40002: 限流错误
     return new RateLimitError()
@@ -25,7 +25,7 @@ export function mapApiErrorToTushareError(
       message.includes('token过期') ||
       message.includes('token')
     ) {
-      return new AuthenticationError(message, code)
+      return new AuthenticationError(message, code, response, requestParams)
     } else if (message.includes('积分不足') || message.includes('无权限')) {
       return new TushareError(
         TushareErrorType.PERMISSION_ERROR,
@@ -35,7 +35,7 @@ export function mapApiErrorToTushareError(
         requestParams
       )
     } else {
-      return new AuthenticationError(message, code)
+      return new AuthenticationError(message, code, response, requestParams)
     }
   } else if (code === -1) {
     // -1: 可能是参数错误或频率限制
@@ -204,8 +204,8 @@ export class RateLimitError extends TushareError {
  * ```
  */
 export class AuthenticationError extends TushareError {
-  constructor(message: string, code?: number) {
-    super(TushareErrorType.AUTHENTICATION_ERROR, message, code || 40001, undefined, undefined)
+  constructor(message: string, code?: number, rawResponse?: TushareRawResponse, requestParams?: Record<string, unknown>) {
+    super(TushareErrorType.AUTHENTICATION_ERROR, message, code || 40001, rawResponse, requestParams)
     this.name = 'AuthenticationError'
 
     // 维护正确的原型链

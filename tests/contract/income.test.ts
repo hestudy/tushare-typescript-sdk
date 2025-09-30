@@ -45,13 +45,17 @@ describe('利润表接口契约测试', () => {
       })
     )
 
-    const client = new TushareClient({ token: 'test_token_12345678901234567890' })
+    const client = new TushareClient({ token: 'test_token_123456789012345678901' })
 
-    // 调用方法 - 此时应该失败,因为 getIncomeStatement 方法尚未实现
-    await expect(async () => {
-      // @ts-expect-error - 方法尚未实现
-      await client.getIncomeStatement('000001.SZ')
-    }).rejects.toThrow()
+    // 调用方法 - 应该成功返回利润表数据
+    const result = await client.getIncomeStatement('000001.SZ')
+
+    // 验证响应数据
+    expect(result).toBeInstanceOf(Array)
+    expect(result.length).toBe(2)
+    expect(result[0].tsCode).toBe('000001.SZ')
+    expect(result[0].endDate).toBe('20231231')
+    expect(result[0].revenue).toBe(44000000000)
   })
 
   it('认证失败: token 无效返回 40001 错误', async () => {
@@ -72,13 +76,10 @@ describe('利润表接口契约测试', () => {
       })
     )
 
-    const client = new TushareClient({ token: 'invalid_token_12345678901234567890' })
+    const client = new TushareClient({ token: 'invalid_token_123456789012345678901' })
 
     // 调用方法 - 应该抛出认证错误
-    await expect(async () => {
-      // @ts-expect-error - 方法尚未实现
-      await client.getIncomeStatement('000001.SZ')
-    }).rejects.toThrow()
+    await expect(client.getIncomeStatement('000001.SZ')).rejects.toThrow()
   })
 
   it('限流错误: 超出频率限制返回 40002 错误', async () => {
@@ -99,13 +100,10 @@ describe('利润表接口契约测试', () => {
       })
     )
 
-    const client = new TushareClient({ token: 'test_token_12345678901234567890' })
+    const client = new TushareClient({ token: 'test_token_123456789012345678901' })
 
     // 调用方法 - 应该抛出限流错误
-    await expect(async () => {
-      // @ts-expect-error - 方法尚未实现
-      await client.getIncomeStatement('000001.SZ')
-    }).rejects.toThrow()
+    await expect(client.getIncomeStatement('000001.SZ')).rejects.toThrow()
   })
 
   it('空数据响应: 未披露数据返回空 items', async () => {
@@ -131,12 +129,11 @@ describe('利润表接口契约测试', () => {
       })
     )
 
-    const client = new TushareClient({ token: 'test_token_12345678901234567890' })
+    const client = new TushareClient({ token: 'test_token_123456789012345678901' })
 
     // 调用方法 - 应该返回空数组
-    await expect(async () => {
-      // @ts-expect-error - 方法尚未实现
-      await client.getIncomeStatement('999999.SZ')
-    }).rejects.toThrow()
+    const result = await client.getIncomeStatement('999999.SZ')
+    expect(result).toBeInstanceOf(Array)
+    expect(result.length).toBe(0)
   })
 })
