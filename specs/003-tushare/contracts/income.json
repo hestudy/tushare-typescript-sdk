@@ -1,0 +1,162 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Tushare 利润表接口契约",
+  "description": "定义 income 接口的请求和响应格式",
+  "definitions": {
+    "request": {
+      "type": "object",
+      "required": ["api_name", "token", "params"],
+      "properties": {
+        "api_name": {
+          "type": "string",
+          "const": "income"
+        },
+        "token": {
+          "type": "string",
+          "minLength": 1
+        },
+        "params": {
+          "type": "object",
+          "required": ["ts_code"],
+          "properties": {
+            "ts_code": {
+              "type": "string",
+              "pattern": "^\\d{6}\\.(SZ|SH|BJ)$",
+              "description": "股票代码"
+            },
+            "start_date": {
+              "type": "string",
+              "pattern": "^\\d{8}$",
+              "description": "起始报告期(YYYYMMDD)"
+            },
+            "end_date": {
+              "type": "string",
+              "pattern": "^\\d{8}$",
+              "description": "结束报告期(YYYYMMDD)"
+            },
+            "period": {
+              "type": "string",
+              "enum": ["20231231", "20230630", "20230331", "20230930"],
+              "description": "报告期(年报/半年报/一季报/三季报)"
+            }
+          }
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "指定返回字段"
+        }
+      }
+    },
+    "response_success": {
+      "type": "object",
+      "required": ["code", "msg", "data"],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "const": 0
+        },
+        "msg": {
+          "type": "string",
+          "const": "success"
+        },
+        "data": {
+          "type": "object",
+          "required": ["fields", "items"],
+          "properties": {
+            "fields": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "字段名列表"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "description": "数据行,与 fields 对应"
+              },
+              "description": "数据列表"
+            }
+          }
+        }
+      }
+    },
+    "response_error_auth": {
+      "type": "object",
+      "required": ["code", "msg"],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "const": 40001
+        },
+        "msg": {
+          "type": "string",
+          "description": "token认证失败"
+        }
+      }
+    },
+    "response_error_rate_limit": {
+      "type": "object",
+      "required": ["code", "msg"],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "const": 40002
+        },
+        "msg": {
+          "type": "string",
+          "description": "超出调用频率限制"
+        }
+      }
+    }
+  },
+  "examples": {
+    "request_basic": {
+      "api_name": "income",
+      "token": "your_token_here",
+      "params": {
+        "ts_code": "000001.SZ"
+      }
+    },
+    "request_with_date": {
+      "api_name": "income",
+      "token": "your_token_here",
+      "params": {
+        "ts_code": "000001.SZ",
+        "start_date": "20230101",
+        "end_date": "20231231"
+      }
+    },
+    "response_success": {
+      "code": 0,
+      "msg": "success",
+      "data": {
+        "fields": ["ts_code", "end_date", "ann_date", "total_revenue", "revenue", "n_income"],
+        "items": [
+          ["000001.SZ", "20231231", "20240328", 45000000000, 44000000000, 5000000000],
+          ["000001.SZ", "20230930", "20231030", 32000000000, 31000000000, 3500000000]
+        ]
+      }
+    },
+    "response_empty": {
+      "code": 0,
+      "msg": "success",
+      "data": {
+        "fields": [],
+        "items": []
+      }
+    },
+    "response_error_auth": {
+      "code": 40001,
+      "msg": "token认证失败"
+    },
+    "response_error_rate_limit": {
+      "code": 40002,
+      "msg": "超出调用频率限制,请稍后重试"
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Tushare 现金流量表接口契约",
+  "description": "定义 cashflow 接口的请求和响应格式",
+  "definitions": {
+    "request": {
+      "type": "object",
+      "required": ["api_name", "token", "params"],
+      "properties": {
+        "api_name": {
+          "type": "string",
+          "const": "cashflow"
+        },
+        "token": {
+          "type": "string",
+          "minLength": 1
+        },
+        "params": {
+          "type": "object",
+          "required": ["ts_code"],
+          "properties": {
+            "ts_code": {
+              "type": "string",
+              "pattern": "^\\d{6}\\.(SZ|SH|BJ)$"
+            },
+            "start_date": {
+              "type": "string",
+              "pattern": "^\\d{8}$"
+            },
+            "end_date": {
+              "type": "string",
+              "pattern": "^\\d{8}$"
+            }
+          }
+        }
+      }
+    },
+    "response_success": {
+      "type": "object",
+      "required": ["code", "msg", "data"],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "const": 0
+        },
+        "msg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "required": ["fields", "items"],
+          "properties": {
+            "fields": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "array"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "examples": {
+    "request_basic": {
+      "api_name": "cashflow",
+      "token": "your_token_here",
+      "params": {
+        "ts_code": "000001.SZ"
+      }
+    },
+    "response_success": {
+      "code": 0,
+      "msg": "success",
+      "data": {
+        "fields": ["ts_code", "end_date", "n_cashflow_act", "n_cashflow_inv_act", "n_cash_flows_fnc_act"],
+        "items": [
+          ["000001.SZ", "20231231", 15000000000, -8000000000, -3000000000]
+        ]
+      }
+    }
+  }
+}
